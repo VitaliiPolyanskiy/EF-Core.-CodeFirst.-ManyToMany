@@ -24,11 +24,11 @@ namespace CodeFirstManyToMany
 
                 using (LanguageContext db = new LanguageContext(options))
                 {
-                    List<Continent> list = db.Continents.Include(l => l.Languages).ToList();
+                    List<Language> list = db.Languages.Include(l => l.Continents).ToList();
                     foreach (var l in list)
                     {
                         Console.WriteLine(l.Name);
-                        foreach (var cont in l.Languages)
+                        foreach (var cont in l.Continents)
                         {
                             Console.WriteLine("\t" + cont.Name);
                         }
